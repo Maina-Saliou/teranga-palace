@@ -250,6 +250,11 @@ input,select{ font-family:inherit; }
 .review-item .head{ display:flex; justify-content:space-between; margin-bottom:8px; font-weight:700; }
 .stars{ color:var(--gold-dark); letter-spacing:2px; }
 
+/* ---------- Carte Leaflet ---------- */
+.leaflet-popup-content-wrapper{ border-radius:var(--radius-s); font-family:'Manrope',sans-serif; }
+.leaflet-popup-content{ font-size:0.88rem; }
+.leaflet-container{ font-family:'Manrope',sans-serif; }
+
 /* ---------- Auth ---------- */
 .auth-wrap{ min-height:80vh; display:flex; align-items:center; justify-content:center; padding:60px 20px; }
 .auth-card{ width:100%; max-width:440px; background:var(--white); border-radius:var(--radius-l); box-shadow:var(--shadow-pop); padding:40px; }

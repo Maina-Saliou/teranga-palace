@@ -30,7 +30,7 @@ union all
 select id, 'Barcelone', 'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200' from public.pays where code = 'ES';
 
 -- 3. HOTELS (dont le vaisseau amiral : Teranga Palace Dakar)
-insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos)
+insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos, latitude, longitude)
 select v.id,
   'Teranga Palace Dakar',
   'Corniche Ouest, Dakar, Sénégal',
@@ -42,55 +42,62 @@ select v.id,
     'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200',
     'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200',
     'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200'
-  ]
+  ],
+  14.6928, -17.4749
 from public.villes v where v.nom = 'Dakar';
 
-insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos)
+insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos, latitude, longitude)
 select v.id, 'Teranga Resort Saly', 'Route de la Petite Côte, Saly, Sénégal',
   'Un resort balnéaire les pieds dans le sable, entre piscine à débordement et cuisine créole.', 4,
   array['Piscine','WiFi','Restaurant','Parking'],
   'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600',
-  array['https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200']
+  array['https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200'],
+  14.4531, -17.0092
 from public.villes v where v.nom = 'Saly';
 
-insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos)
+insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos, latitude, longitude)
 select v.id, 'Riad Al Bahja', 'Médina, Marrakech, Maroc',
   'Riad traditionnel au cœur de la médina, patio andalou et hammam privatif.', 5,
   array['WiFi','Spa','Restaurant'],
   'https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=1600',
-  array['https://images.unsplash.com/photo-1591088398332-8a7791972843?w=1200']
+  array['https://images.unsplash.com/photo-1591088398332-8a7791972843?w=1200'],
+  31.6295, -7.9811
 from public.villes v where v.nom = 'Marrakech';
 
-insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos)
+insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos, latitude, longitude)
 select v.id, 'Hôtel Lumière Paris', '8e Arrondissement, Paris, France',
   'Élégance haussmannienne à deux pas des Champs-Élysées.', 5,
   array['WiFi','Restaurant','Salle de sport','Parking'],
   'https://images.unsplash.com/photo-1541343672885-9be56236302a?w=1600',
-  array['https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200']
+  array['https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200'],
+  48.8721, 2.3055
 from public.villes v where v.nom = 'Paris';
 
-insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos)
+insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos, latitude, longitude)
 select v.id, 'Bosphore Palace', 'Beyoğlu, Istanbul, Turquie',
   'Vue imprenable sur le Bosphore, hammam ottoman et rooftop panoramique.', 5,
   array['Piscine','WiFi','Spa','Restaurant'],
   'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600',
-  array['https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200']
+  array['https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200'],
+  41.0370, 28.9850
 from public.villes v where v.nom = 'Istanbul';
 
-insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos)
+insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos, latitude, longitude)
 select v.id, 'Burj Al Sable', 'Jumeirah, Dubaï, EAU',
   'Tour signature, suites vue mer et plage privée.', 5,
   array['Piscine','WiFi','Spa','Restaurant','Salle de sport','Parking'],
   'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600',
-  array['https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200']
+  array['https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200'],
+  25.1412, 55.1852
 from public.villes v where v.nom = 'Dubaï';
 
-insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos)
+insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos, latitude, longitude)
 select v.id, 'Casa Barcelona Suites', 'Eixample, Barcelone, Espagne',
   'Design catalan contemporain à deux pas de la Sagrada Família.', 4,
   array['WiFi','Restaurant','Parking'],
   'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1600',
-  array['https://images.unsplash.com/photo-1523592121529-f6dde35f079e?w=1200']
+  array['https://images.unsplash.com/photo-1523592121529-f6dde35f079e?w=1200'],
+  41.3958, 2.1611
 from public.villes v where v.nom = 'Barcelone';
 
 -- 4. CHAMBRES (pour chaque hôtel, 4 types de chambres)

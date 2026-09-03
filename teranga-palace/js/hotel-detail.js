@@ -42,6 +42,8 @@ async function loadHotel() {
   document.getElementById("services-grid").innerHTML = (hotel.services || [])
     .map(s => `<div class="service-item">${SERVICE_ICONS[s] || "✔️"} ${s}</div>`).join("");
 
+  initMap(hotel);
+
   await loadChambres();
   await loadReviews();
   recomputePrice();
@@ -126,6 +128,37 @@ async function loadReviews() {
   } else {
     wrap.innerHTML = `<p style="font-size:0.88rem;"><a href="auth.html" style="color:var(--gold-dark);font-weight:700;">Connectez-vous</a> pour laisser un avis.</p>`;
   }
+}
+
+function initMap(hotel) {
+  const mapEl = document.getElementById("hotel-map");
+  const lat = parseFloat(hotel.latitude);
+  const lng = parseFloat(hotel.longitude);
+
+  if (!mapEl || isNaN(lat) || isNaN(lng)) {
+    if (mapEl) mapEl.innerHTML = `<div class="empty-state" style="height:100%;display:flex;align-items:center;justify-content:center;">Position non renseignée pour cet hôtel.</div>`;
+    return;
+  }
+
+  const map = L.map(mapEl, { scrollWheelZoom: false }).setView([lat, lng], 14);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(map);
+
+  const goldIcon = L.divIcon({
+    className: "",
+    html: `<div style="background:#C89B4A;width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #14120F;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>`,
+    iconSize: [22, 22],
+    iconAnchor: [11, 22],
+  });
+
+  L.marker([lat, lng], { icon: goldIcon }).addTo(map)
+    .bindPopup(`<strong>${hotel.nom}</strong><br>${hotel.adresse}`)
+    .openPopup();
+
+  // Leaflet a besoin d'un recalcul de taille une fois le conteneur bien affiché
+  setTimeout(() => map.invalidateSize(), 200);
 }
 
 function nightsBetween(a, b) {
