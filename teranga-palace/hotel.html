@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Hôtel — Teranga Palace</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><span class="mark">TP</span> Teranga Palace</a>
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="hotels.html">Hôtels</a>
+      <a href="index.html#destinations">Destinations</a>
+      <a href="account.html">Mes réservations</a>
+    </nav>
+    <div class="header-actions" id="header-actions">
+      <a href="auth.html" class="btn btn-ghost btn-sm" id="auth-link">Connexion</a>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding-top:30px;">
+  <div id="hotel-header">
+    <div class="empty-state">Chargement de l'hôtel…</div>
+  </div>
+
+  <div class="gallery" id="gallery" style="margin-top:24px;"></div>
+
+  <div class="detail-layout">
+    <div>
+      <div class="info-block">
+        <h2>À propos de cet hôtel</h2>
+        <p id="hotel-description" style="margin-top:12px;"></p>
+      </div>
+      <div class="info-block">
+        <h2>Services & équipements</h2>
+        <div class="services-grid" id="services-grid" style="margin-top:16px;"></div>
+      </div>
+      <div class="info-block">
+        <h2>Chambres disponibles</h2>
+        <div id="rooms-list" style="margin-top:16px;"></div>
+      </div>
+      <div class="info-block" style="border-bottom:none;">
+        <h2>Avis clients</h2>
+        <div id="reviews-summary" style="margin:14px 0 20px;"></div>
+        <div class="reviews-list" id="reviews-list"></div>
+        <div id="review-form-wrap" style="margin-top:24px;"></div>
+      </div>
+    </div>
+
+    <div class="booking-box">
+      <h3 style="font-size:1.25rem;margin-bottom:16px;">Réserver votre séjour</h3>
+      <div class="field-row">
+        <div class="field"><label>Date d'arrivée</label><input type="date" id="b-arrivee"></div>
+        <div class="field"><label>Heure</label><input type="time" id="b-heure-arrivee" value="14:00"></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Date de départ</label><input type="date" id="b-depart"></div>
+        <div class="field"><label>Heure</label><input type="time" id="b-heure-depart" value="12:00"></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Adultes</label><input type="number" id="b-adultes" min="1" value="2"></div>
+        <div class="field"><label>Enfants</label><input type="number" id="b-enfants" min="0" value="0"></div>
+      </div>
+      <div class="field">
+        <label>Type de chambre</label>
+        <select id="b-chambre" style="padding:11px 12px;border:1px solid var(--border);border-radius:6px;"></select>
+      </div>
+
+      <div style="margin-top:18px;">
+        <div class="price-line"><span id="pl-nuits">0 nuit</span><span id="pl-prix-nuit">—</span></div>
+        <div class="price-line"><span>Sous-total</span><span id="pl-subtotal">—</span></div>
+        <div class="price-line"><span>Taxes (18%)</span><span id="pl-taxes">—</span></div>
+        <div class="price-line total"><span>Total</span><span id="pl-total">—</span></div>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="btn-reserver" style="margin-top:18px;">Confirmer la réservation</button>
+      <p id="booking-msg" style="font-size:0.82rem;margin-top:10px;"></p>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-bottom">
+    <span>© 2026 Teranga Palace. Tous droits réservés.</span>
+    <span>Fait avec Teranga 🇸🇳</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/demoData.js"></script>
+<script src="js/dataLayer.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/hotel-detail.js"></script>
+</body>
+</html>
