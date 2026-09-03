@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon compte — Teranga Palace</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><span class="mark">TP</span> Teranga Palace</a>
+    <nav class="nav-links"><a href="index.html">Accueil</a><a href="hotels.html">Hôtels</a></nav>
+    <div class="header-actions"><button class="btn btn-ghost btn-sm" id="btn-logout">Se déconnecter</button></div>
+  </div>
+</header>
+
+<div class="dash-layout">
+  <aside class="dash-sidebar">
+    <div class="user-chip">
+      <div class="avatar" id="user-initial">?</div>
+      <div><div id="user-name" style="font-weight:700;">Chargement…</div><div style="font-size:0.78rem;color:var(--gold-light);">Client</div></div>
+    </div>
+    <nav class="dash-nav">
+      <a href="#reservations" class="tab-link active" data-tab="reservations">📅 Mes réservations</a>
+      <a href="#historique" class="tab-link" data-tab="historique">🕓 Historique</a>
+      <a href="#factures" class="tab-link" data-tab="factures">🧾 Factures</a>
+      <a href="#profil" class="tab-link" data-tab="profil">👤 Mon profil</a>
+    </nav>
+  </aside>
+
+  <main class="dash-main">
+    <section id="tab-reservations" class="tab-panel">
+      <div class="card-panel">
+        <h2 style="margin-bottom:18px;">Réservations à venir</h2>
+        <div id="reservations-upcoming"><div class="empty-state">Chargement…</div></div>
+      </div>
+    </section>
+
+    <section id="tab-historique" class="tab-panel" style="display:none;">
+      <div class="card-panel">
+        <h2 style="margin-bottom:18px;">Historique des séjours</h2>
+        <div id="reservations-history"><div class="empty-state">Chargement…</div></div>
+      </div>
+    </section>
+
+    <section id="tab-factures" class="tab-panel" style="display:none;">
+      <div class="card-panel">
+        <h2 style="margin-bottom:18px;">Mes factures</h2>
+        <div id="factures-list"><div class="empty-state">Chargement…</div></div>
+      </div>
+    </section>
+
+    <section id="tab-profil" class="tab-panel" style="display:none;">
+      <div class="card-panel" style="max-width:480px;">
+        <h2 style="margin-bottom:18px;">Mon profil</h2>
+        <form id="profile-form">
+          <div class="form-group"><label>Prénom</label><input type="text" id="p-prenom"></div>
+          <div class="form-group"><label>Nom</label><input type="text" id="p-nom"></div>
+          <div class="form-group"><label>Email</label><input type="email" id="p-email" disabled></div>
+          <div class="form-group"><label>Téléphone</label><input type="tel" id="p-telephone"></div>
+          <button class="btn btn-dark" type="submit">Enregistrer</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/account.js"></script>
+</body>
+</html>
