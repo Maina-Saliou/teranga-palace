@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion — Teranga Palace</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background:var(--emerald);">
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><span class="mark">TP</span> Teranga Palace</a>
+    <nav class="nav-links"><a href="index.html">Accueil</a><a href="hotels.html">Hôtels</a></nav>
+    <div></div>
+  </div>
+</header>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-tabs">
+      <div class="auth-tab active" id="tab-login">Connexion</div>
+      <div class="auth-tab" id="tab-register">Inscription</div>
+    </div>
+
+    <div id="form-msg-zone"></div>
+
+    <form id="login-form">
+      <div class="form-group"><label>Email</label><input type="email" id="li-email" required></div>
+      <div class="form-group"><label>Mot de passe</label><input type="password" id="li-password" required></div>
+      <button class="btn btn-primary btn-block" type="submit">Se connecter</button>
+    </form>
+
+    <form id="register-form" style="display:none;">
+      <div class="field-row">
+        <div class="form-group"><label>Prénom</label><input type="text" id="re-prenom" required></div>
+        <div class="form-group"><label>Nom</label><input type="text" id="re-nom" required></div>
+      </div>
+      <div class="form-group"><label>Email</label><input type="email" id="re-email" required></div>
+      <div class="form-group"><label>Téléphone</label><input type="tel" id="re-telephone"></div>
+      <div class="form-group"><label>Mot de passe</label><input type="password" id="re-password" minlength="6" required></div>
+      <button class="btn btn-primary btn-block" type="submit">Créer mon compte</button>
+    </form>
+
+    <p style="text-align:center;font-size:0.82rem;margin-top:20px;color:var(--text-muted);">
+      En continuant, vous acceptez les conditions générales de Teranga Palace.
+    </p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
