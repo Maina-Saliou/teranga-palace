@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rechercher un hôtel — Teranga Palace</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><span class="mark">TP</span> Teranga Palace</a>
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="hotels.html">Hôtels</a>
+      <a href="index.html#destinations">Destinations</a>
+      <a href="account.html">Mes réservations</a>
+    </nav>
+    <div class="header-actions" id="header-actions">
+      <a href="auth.html" class="btn btn-ghost btn-sm" id="auth-link">Connexion</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Trouvez votre hôtel</h1>
+    <p id="search-summary">Tous nos établissements</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="results-layout">
+    <aside class="filters-card">
+      <h4>Affiner la recherche</h4>
+      <div class="filter-group">
+        <label style="text-transform:uppercase;font-size:0.72rem;font-weight:800;color:var(--text-muted);">Pays</label>
+        <select id="f-pays" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;margin-top:6px;">
+          <option value="">Tous les pays</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label style="text-transform:uppercase;font-size:0.72rem;font-weight:800;color:var(--text-muted);">Ville</label>
+        <select id="f-ville" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;margin-top:6px;">
+          <option value="">Toutes les villes</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label style="text-transform:uppercase;font-size:0.72rem;font-weight:800;color:var(--text-muted);">Étoiles</label>
+        <label><input type="checkbox" class="f-etoile" value="5"> ⭐⭐⭐⭐⭐</label>
+        <label><input type="checkbox" class="f-etoile" value="4"> ⭐⭐⭐⭐</label>
+        <label><input type="checkbox" class="f-etoile" value="3"> ⭐⭐⭐</label>
+      </div>
+      <div class="filter-group">
+        <label style="text-transform:uppercase;font-size:0.72rem;font-weight:800;color:var(--text-muted);">Services</label>
+        <label><input type="checkbox" class="f-service" value="Piscine"> Piscine</label>
+        <label><input type="checkbox" class="f-service" value="Spa"> Spa</label>
+        <label><input type="checkbox" class="f-service" value="WiFi"> WiFi</label>
+        <label><input type="checkbox" class="f-service" value="Restaurant"> Restaurant</label>
+        <label><input type="checkbox" class="f-service" value="Salle de sport"> Salle de sport</label>
+        <label><input type="checkbox" class="f-service" value="Parking"> Parking</label>
+      </div>
+      <div class="filter-group">
+        <label style="text-transform:uppercase;font-size:0.72rem;font-weight:800;color:var(--text-muted);">Prix max / nuit</label>
+        <input type="range" id="f-prix" min="20000" max="300000" step="5000" value="300000" style="width:100%;">
+        <div id="f-prix-val" style="font-size:0.85rem;font-weight:700;margin-top:4px;">Jusqu'à 300 000 FCFA</div>
+      </div>
+      <button class="btn btn-dark btn-block" id="apply-filters">Appliquer</button>
+    </aside>
+
+    <main>
+      <div class="results-list" id="results-list">
+        <div class="empty-state">Chargement des hôtels…</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-bottom">
+    <span>© 2026 Teranga Palace. Tous droits réservés.</span>
+    <span>Fait avec Teranga 🇸🇳</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/demoData.js"></script>
+<script src="js/dataLayer.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/hotels.js"></script>
+</body>
+</html>
