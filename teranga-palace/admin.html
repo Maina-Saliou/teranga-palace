@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration — Teranga Palace</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><span class="mark">TP</span> Teranga Palace</a>
+    <nav class="nav-links"><a href="index.html">Voir le site</a></nav>
+    <div class="header-actions"><button class="btn btn-ghost btn-sm" id="btn-logout">Se déconnecter</button></div>
+  </div>
+</header>
+
+<div class="dash-layout">
+  <aside class="dash-sidebar">
+    <div class="user-chip">
+      <div class="avatar" id="admin-initial">A</div>
+      <div><div id="admin-name" style="font-weight:700;">Chargement…</div><div style="font-size:0.78rem;color:var(--gold-light);" id="admin-role">Administrateur</div></div>
+    </div>
+    <nav class="dash-nav">
+      <a href="#apercu" class="tab-link active" data-tab="apercu">📊 Aperçu</a>
+      <a href="#hotels" class="tab-link" data-tab="hotels">🏨 Hôtels</a>
+      <a href="#chambres" class="tab-link" data-tab="chambres">🛏️ Chambres</a>
+      <a href="#reservations" class="tab-link" data-tab="reservations">📅 Réservations</a>
+      <a href="#revenus" class="tab-link" data-tab="revenus">💰 Revenus</a>
+    </nav>
+  </aside>
+
+  <main class="dash-main">
+    <section id="tab-apercu" class="tab-panel">
+      <div class="stat-cards">
+        <div class="stat-card"><div class="num" id="stat-hotels">—</div><div class="label">Hôtels actifs</div></div>
+        <div class="stat-card"><div class="num" id="stat-chambres">—</div><div class="label">Chambres</div></div>
+        <div class="stat-card"><div class="num" id="stat-reservations">—</div><div class="label">Réservations</div></div>
+        <div class="stat-card"><div class="num" id="stat-revenus">—</div><div class="label">Revenus totaux</div></div>
+      </div>
+      <div class="card-panel">
+        <h3 style="margin-bottom:14px;">Chambres les plus réservées</h3>
+        <div id="top-rooms"><div class="empty-state">Chargement…</div></div>
+      </div>
+    </section>
+
+    <section id="tab-hotels" class="tab-panel" style="display:none;">
+      <div class="card-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+          <h2>Gestion des hôtels</h2>
+          <button class="btn btn-primary btn-sm" id="btn-new-hotel">+ Ajouter un hôtel</button>
+        </div>
+        <div id="admin-hotels-list"><div class="empty-state">Chargement…</div></div>
+      </div>
+    </section>
+
+    <section id="tab-chambres" class="tab-panel" style="display:none;">
+      <div class="card-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+          <h2>Gestion des chambres</h2>
+          <button class="btn btn-primary btn-sm" id="btn-new-chambre">+ Ajouter une chambre</button>
+        </div>
+        <div id="admin-chambres-list"><div class="empty-state">Chargement…</div></div>
+      </div>
+    </section>
+
+    <section id="tab-reservations" class="tab-panel" style="display:none;">
+      <div class="card-panel">
+        <h2 style="margin-bottom:18px;">Toutes les réservations</h2>
+        <div id="admin-reservations-list"><div class="empty-state">Chargement…</div></div>
+      </div>
+    </section>
+
+    <section id="tab-revenus" class="tab-panel" style="display:none;">
+      <div class="card-panel">
+        <h2 style="margin-bottom:18px;">Revenus par hôtel</h2>
+        <div id="revenus-list"><div class="empty-state">Chargement…</div></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal-overlay" id="modal-hotel" style="display:none;">
+  <div class="modal-box">
+    <h3 id="modal-hotel-title" style="margin-bottom:16px;">Ajouter un hôtel</h3>
+    <form id="hotel-form">
+      <input type="hidden" id="h-id">
+      <div class="form-group"><label>Nom de l'hôtel</label><input type="text" id="h-nom" required></div>
+      <div class="form-group"><label>Ville</label><select id="h-ville" required></select></div>
+      <div class="form-group"><label>Adresse</label><input type="text" id="h-adresse" required></div>
+      <div class="form-group"><label>Description</label><textarea id="h-description" rows="3" style="padding:11px;border:1px solid var(--border);border-radius:6px;"></textarea></div>
+      <div class="field-row">
+        <div class="form-group"><label>Étoiles</label><select id="h-etoiles"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+        <div class="form-group"><label>Actif</label><select id="h-actif"><option value="true">Oui</option><option value="false">Non</option></select></div>
+      </div>
+      <div class="form-group"><label>Photo principale (URL)</label><input type="url" id="h-photo"></div>
+      <div class="form-group"><label>Galerie (URLs séparées par des virgules)</label><input type="text" id="h-galerie"></div>
+      <div class="form-group"><label>Services</label>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <label><input type="checkbox" class="h-service" value="Piscine"> Piscine</label>
+          <label><input type="checkbox" class="h-service" value="WiFi"> WiFi</label>
+          <label><input type="checkbox" class="h-service" value="Restaurant"> Restaurant</label>
+          <label><input type="checkbox" class="h-service" value="Spa"> Spa</label>
+          <label><input type="checkbox" class="h-service" value="Salle de sport"> Salle de sport</label>
+          <label><input type="checkbox" class="h-service" value="Parking"> Parking</label>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:10px;">
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <button type="button" class="btn btn-outline" id="btn-cancel-hotel">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-chambre" style="display:none;">
+  <div class="modal-box">
+    <h3 style="margin-bottom:16px;">Ajouter une chambre</h3>
+    <form id="chambre-form">
+      <div class="form-group"><label>Hôtel</label><select id="c-hotel" required></select></div>
+      <div class="field-row">
+        <div class="form-group"><label>N° de chambre</label><input type="text" id="c-numero" required></div>
+        <div class="form-group"><label>Type</label>
+          <select id="c-type"><option>Simple</option><option>Double</option><option>Suite</option><option>Familiale</option><option>Deluxe</option></select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="form-group"><label>Capacité adultes</label><input type="number" id="c-adultes" value="2" min="1"></div>
+        <div class="form-group"><label>Capacité enfants</label><input type="number" id="c-enfants" value="0" min="0"></div>
+      </div>
+      <div class="form-group"><label>Prix / nuit (FCFA)</label><input type="number" id="c-prix" required></div>
+      <div class="form-group"><label>Description</label><input type="text" id="c-description"></div>
+      <div class="form-group"><label>Photo (URL)</label><input type="url" id="c-photo"></div>
+      <div style="display:flex;gap:10px;margin-top:10px;">
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <button type="button" class="btn btn-outline" id="btn-cancel-chambre">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
