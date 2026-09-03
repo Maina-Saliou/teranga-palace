@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teranga Palace — Hôtels de luxe au Sénégal et dans le monde</title>
+<meta name="description" content="Réservez les plus beaux hôtels au Sénégal, au Maroc, en France, en Turquie, à Dubaï et en Espagne avec Teranga Palace.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><span class="mark">TP</span> Teranga Palace</a>
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="hotels.html">Hôtels</a>
+      <a href="index.html#destinations">Destinations</a>
+      <a href="account.html">Mes réservations</a>
+    </nav>
+    <div class="header-actions" id="header-actions">
+      <a href="auth.html" class="btn btn-ghost btn-sm" id="auth-link">Connexion</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">Teranga · l'art de l'hospitalité sénégalaise</div>
+  <h1>Un palace vous attend, <em>où que vous alliez</em></h1>
+  <p class="hero-sub">Du Sénégal à Dubaï, réservez des chambres d'exception, sélectionnées avec la même exigence que si vous étiez chez vous.</p>
+</section>
+
+<div class="container">
+  <form class="search-card" id="search-form">
+    <div class="search-field">
+      <label for="s-pays">Pays</label>
+      <select id="s-pays"><option value="">Tous les pays</option></select>
+    </div>
+    <div class="search-field">
+      <label for="s-ville">Ville</label>
+      <select id="s-ville"><option value="">Toutes les villes</option></select>
+    </div>
+    <div class="search-field">
+      <label for="s-arrivee">Arrivée</label>
+      <input type="date" id="s-arrivee" required>
+    </div>
+    <div class="search-field">
+      <label for="s-depart">Départ</label>
+      <input type="date" id="s-depart" required>
+    </div>
+    <div class="search-field">
+      <label for="s-adultes">Adultes</label>
+      <input type="number" id="s-adultes" min="1" value="2">
+    </div>
+    <div class="search-field" style="border-right:none;">
+      <label for="s-enfants">Enfants</label>
+      <input type="number" id="s-enfants" min="0" value="0">
+    </div>
+    <div class="search-submit" style="grid-column:1/-1;">
+      <button type="submit" class="btn btn-primary btn-block">🔍 Rechercher un hôtel</button>
+    </div>
+  </form>
+</div>
+
+<div class="wax-divider" style="margin-top:80px;"></div>
+
+<section class="section" id="destinations">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Explorez</div>
+      <h2>Nos destinations</h2>
+      <p>Six pays, une même promesse : un accueil mémorable.</p>
+    </div>
+    <div class="destinations-grid" id="destinations-grid">
+      <!-- injecté en JS -->
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ivory-dim); padding-top:70px;">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Sélection</div>
+      <h2>Hôtels à la une</h2>
+      <p>Les établissements les mieux notés du moment.</p>
+    </div>
+    <div class="hotels-grid" id="featured-hotels">
+      <!-- injecté en JS -->
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="hotels.html" class="btn btn-outline">Voir tous les hôtels</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Pourquoi nous</div>
+      <h2>La réservation, en toute confiance</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="ico">💳</div><h4>Paiement sécurisé</h4><p>Carte bancaire ou Mobile Money, vos transactions sont protégées.</p></div>
+      <div class="why-card"><div class="ico">🏷️</div><h4>Meilleur prix garanti</h4><p>Comparez et réservez au prix le plus juste, sans frais cachés.</p></div>
+      <div class="why-card"><div class="ico">📄</div><h4>Facture instantanée</h4><p>Recevez votre facture PDF dès la confirmation de séjour.</p></div>
+      <div class="why-card"><div class="ico">🕊️</div><h4>Annulation flexible</h4><p>Changez d'avis sereinement selon les conditions de l'hôtel.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wax-divider dark"></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:16px;"><span class="mark">TP</span> Teranga Palace</a>
+        <p style="color:rgba(255,255,255,0.6); max-width:280px;">La Teranga, l'hospitalité sénégalaise, portée à l'échelle du monde. Réservez votre prochain séjour d'exception.</p>
+      </div>
+      <div><h5>Explorer</h5><ul><li><a href="hotels.html">Tous les hôtels</a></li><li><a href="index.html#destinations">Destinations</a></li><li><a href="account.html">Mon compte</a></li></ul></div>
+      <div><h5>Support</h5><ul><li><a href="#">Centre d'aide</a></li><li><a href="#">Conditions générales</a></li><li><a href="#">Politique d'annulation</a></li></ul></div>
+      <div><h5>Contact</h5><ul><li>Dakar, Sénégal</li><li>contact@terangapalace.sn</li><li>+221 33 800 00 00</li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Teranga Palace. Tous droits réservés.</span>
+      <span>Fait avec Teranga 🇸🇳</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/demoData.js"></script>
+<script src="js/dataLayer.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
