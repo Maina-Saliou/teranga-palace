@@ -1,8 +1,10 @@
 # 🏨 Teranga Palace — Plateforme de réservation hôtelière
 
-Site complet de réservation d'hôtels (façon Booking.com / Airbnb) en **HTML / CSS / JavaScript pur**, connecté à **Supabase** (base de données + authentification), prêt à héberger sur **GitHub Pages**.
+Site de réservation d'hôtels (façon Booking.com / Airbnb) développé en **HTML / CSS / JavaScript**, connecté à **Supabase** (base de données + authentification), hébergé sur **GitHub Pages**.
 
-Construit à partir de ton rapport UML : les tables reprennent exactement les entités identifiées (Client, Chambre, Réservation, Séjour, Facture, Paiement) enrichies de Pays / Villes / Hôtels / Avis pour un vrai site multi-destinations.
+Ce projet a été réalisé dans le cadre du module UML (Licence 2, SUP'INFO Dakar), en prolongement de l'analyse et de la modélisation UML du système de gestion de l'hôtel Teranga Palace. Le modèle de données (entités Client, Chambre, Réservation, Séjour, Facture, Paiement identifiées dans le diagramme de classes) a été repris et implémenté sous forme de base de données relationnelle, puis étendu (Pays, Villes, Hôtels, Avis) pour proposer un vrai site multi-destinations.
+
+**Dépôt GitHub :** https://github.com/Maina-Saliou/teranga-palace
 
 ---
 
@@ -11,103 +13,70 @@ Construit à partir de ton rapport UML : les tables reprennent exactement les en
 ```
 teranga-palace/
 ├── index.html          → Page d'accueil (hero, recherche, destinations, hôtels vedettes)
-├── hotels.html          → Résultats de recherche + filtres
-├── hotel.html            → Fiche hôtel (galerie, chambres, avis, moteur de réservation)
-├── auth.html             → Connexion / inscription
-├── account.html          → Espace client (réservations, historique, factures PDF, profil)
-├── admin.html            → Tableau de bord admin (hôtels, chambres, réservations, revenus)
-├── css/style.css         → Design system (charte or & blanc / ébène / émeraude)
+├── hotels.html         → Résultats de recherche + filtres
+├── hotel.html           → Fiche hôtel (galerie, carte, chambres, avis, moteur de réservation)
+├── auth.html            → Connexion / inscription
+├── account.html         → Espace client (réservations, historique, factures PDF, profil)
+├── admin.html           → Tableau de bord admin (hôtels, chambres, réservations, revenus)
+├── css/style.css        → Design system (charte or / ébène / émeraude)
 ├── js/
-│   ├── config.js          → Clés Supabase à renseigner
+│   ├── config.js          → Configuration Supabase
 │   ├── supabaseClient.js  → Initialisation + helpers partagés
+│   ├── demoData.js, dataLayer.js → Données de démonstration et couche d'accès aux données
 │   ├── nav.js, main.js, hotels.js, hotel-detail.js, auth.js, account.js, admin.js
 └── supabase/
     ├── schema.sql         → Toutes les tables + sécurité (RLS)
-    └── seed.sql           → Données de démonstration (6 pays, 7 hôtels, chambres)
+    └── seed.sql           → Données de démonstration (6 pays, 13 hôtels, chambres)
 ```
-
----
-
-## 🚀 Mise en route (10 minutes)
-
-### 1. Créer les tables dans Supabase
-
-1. Va sur [supabase.com](https://supabase.com) → ton projet → **SQL Editor** → *New query*
-2. Colle le contenu de `supabase/schema.sql` → **Run**
-3. Fais de même avec `supabase/seed.sql` pour avoir des données de démo (hôtels au Sénégal, Maroc, France, Turquie, Dubaï, Espagne)
-
-### 2. Connecter le site à ta base
-
-Ouvre `js/config.js` et remplace les deux valeurs par celles de **Project Settings → API** dans Supabase :
-
-```js
-window.TERANGA_CONFIG = {
-  SUPABASE_URL: "https://xxxxxxxx.supabase.co",
-  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIs...",
-  TAX_RATE: 0.18
-};
-```
-
-⚠️ La clé "anon" est publique par design (elle est protégée par les règles de sécurité RLS déjà écrites dans `schema.sql`) — c'est la clé normale à utiliser côté site.
-
-### 3. Créer ton premier compte admin
-
-1. Ouvre le site → **Connexion** → **Inscription**, crée un compte normal
-2. Dans Supabase → **Table Editor → utilisateurs**, trouve ta ligne et change la colonne `role` de `client` à `admin`
-3. Reconnecte-toi : le lien **Admin** apparaît dans le menu, et `admin.html` devient accessible
-
-### 4. Héberger sur GitHub Pages
-
-```bash
-git init
-git add .
-git commit -m "Teranga Palace — site complet"
-git branch -M main
-git remote add origin https://github.com/TON-PSEUDO/TON-DEPOT.git
-git push -u origin main
-```
-
-Puis sur GitHub : **Settings → Pages → Branch: main → Save**. Le site sera en ligne à `https://ton-pseudo.github.io/ton-depot/` en 1-2 minutes.
 
 ---
 
 ## 🗄️ Modèle de données (Supabase / PostgreSQL)
 
+Le schéma reprend directement les entités et cardinalités du diagramme de classes UML (Client 1—0..* Réservation, Chambre 1—0..* Réservation, Réservation 1—0..1 Séjour, Séjour 1—1 Facture, Facture 1—1..* Paiement).
+
 | Table | Rôle |
 |---|---|
 | `utilisateurs` | Profil client/staff, lié à l'authentification Supabase |
 | `pays`, `villes` | Référentiel géographique des destinations |
-| `hotels` | Fiche hôtel : services, photos, étoiles |
+| `hotels` | Fiche hôtel : services, photos, étoiles, position GPS |
 | `chambres` | Types de chambres, prix, capacité |
-| `reservations` | Réservation : dates, personnes, prix — **empêche les doubles réservations** via une contrainte d'exclusion PostgreSQL |
+| `reservations` | Réservation : dates, personnes, prix — empêche les doubles réservations via une contrainte d'exclusion PostgreSQL |
 | `sejours` | Suivi arrivée/départ réel |
 | `factures` | Facture générée à la réservation |
 | `paiements` | Paiements liés à une facture (carte, Mobile Money…) |
 | `avis` | Avis clients par hôtel |
 
-La sécurité **Row Level Security (RLS)** est activée sur toutes les tables : un client ne voit que ses propres réservations/factures, le catalogue (hôtels, chambres) est public en lecture, et seuls les rôles `admin` / `gestionnaire` / `receptionniste` peuvent modifier le catalogue.
+La sécurité **Row Level Security (RLS)** est activée sur toutes les tables : un client ne voit que ses propres réservations/factures, le catalogue (hôtels, chambres) est public en lecture, et seuls les rôles `admin` / `gestionnaire` / `receptionniste` peuvent modifier le catalogue — ce qui correspond au package transversal « Sécurité » identifié dans l'analyse UML.
 
 ---
 
-## ✨ Fonctionnalités livrées
+## ✨ Fonctionnalités
 
 - Page d'accueil avec recherche (pays, ville, dates, voyageurs)
-- 6 destinations avec nombre d'hôtels et prix "à partir de" calculés en direct
-- Liste d'hôtels avec filtres (pays, étoiles, services, budget)
-- Fiche hôtel : galerie, description, services, chambres, avis clients (+ dépôt d'avis)
-- Moteur de réservation avec calcul automatique du prix, des taxes (18%) et du total
-- Protection anti-double-réservation au niveau base de données
-- Compte client : réservations à venir, historique, annulation, **facture PDF téléchargeable**
+- Destinations avec nombre d'hôtels et prix "à partir de" calculés en direct
+- Liste d'hôtels avec filtres (pays, ville, étoiles, services, budget)
+- Fiche hôtel : galerie, description, services, **carte interactive de localisation**, chambres, avis clients
+- Moteur de réservation avec calcul automatique du prix, des taxes et du total, et vérification de disponibilité (cas d'utilisation « Effectuer une réservation »)
+- Compte client : réservations à venir, historique, annulation, facture PDF téléchargeable
 - Authentification complète (inscription / connexion / déconnexion)
-- Tableau de bord admin : CRUD hôtels, ajout de chambres, vue de toutes les réservations, revenus par hôtel, chambres les plus réservées
+- Tableau de bord admin : gestion des hôtels et chambres, vue de toutes les réservations, revenus, statistiques (chambres les plus réservées)
 
 ## 🎨 Design
 
-Charte "Teranga" : ébène `#14120F`, ivoire `#F7F2E9`, or `#C89B4A`, émeraude `#0E3B36`, touche terracotta `#B5502E`. Typographie Fraunces (display) + Manrope (texte). Un liseré géométrique inspiré des tissus wax sénégalais sert de signature visuelle entre les sections.
+Charte visuelle "Teranga" : ébène `#14120F`, ivoire `#F7F2E9`, or `#C89B4A`, émeraude `#0E3B36`, touche terracotta `#B5502E`. Typographie Fraunces (titres) + Manrope (texte). Un liseré géométrique inspiré des tissus wax sénégalais sert de signature visuelle entre les sections.
 
-## 🔜 Pistes d'évolution (issues de ton rapport UML, section 10)
+## 🔧 Mise en route
 
-- Application mobile (le site est déjà 100% responsive, une PWA est un bon premier pas)
+1. Créer un projet sur [supabase.com](https://supabase.com)
+2. Exécuter `supabase/schema.sql` puis `supabase/seed.sql` dans l'éditeur SQL du projet
+3. Renseigner `SUPABASE_URL` et `SUPABASE_ANON_KEY` dans `js/config.js`
+4. Ouvrir le site, créer un compte, puis passer son rôle à `admin` dans la table `utilisateurs` pour accéder au tableau de bord
+
+## 🔜 Pistes d'évolution
+
+En cohérence avec les axes d'amélioration dégagés lors de l'analyse (section « Réflexion et amélioration ») :
+- Application mobile (PWA, le site étant déjà responsive)
 - Paiement en ligne réel (Stripe / CinetPay pour le Mobile Money)
-- Module de fidélité
-- Chatbot d'assistance
+- Module de fidélisation client
+- Assistant virtuel (chatbot) pour les demandes fréquentes
