@@ -1,8 +1,4 @@
-// ============================================================================
-// DATA LAYER — bascule automatiquement entre Supabase (si connecté et rempli)
-// et les données de démonstration (js/demoData.js). Toutes les pages de
-// lecture (accueil, liste, fiche hôtel) passent par ici.
-// ============================================================================
+
 window.DataLayer = (function () {
   const sb = () => window.supabaseClient;
   const ready = () => window.isSupabaseConfigured();

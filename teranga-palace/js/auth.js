@@ -1,6 +1,4 @@
-// ============================================================================
-// Connexion / inscription via Supabase Auth
-// ============================================================================
+
 const sba = window.supabaseClient;
 
 const tabLogin = document.getElementById("tab-login");

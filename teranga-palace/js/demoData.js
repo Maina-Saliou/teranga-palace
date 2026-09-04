@@ -1,17 +1,8 @@
-// ============================================================================
-// DONNÉES DE DÉMONSTRATION
-// Utilisées automatiquement tant que js/config.js n'a pas de vraies clés
-// Supabase. Dès que Supabase est connecté et rempli via supabase/seed.sql,
-// les vraies données prennent le relais sans qu'il faille toucher au code.
-//
-// Photos : IDs Unsplash fixes (pas de requête aléatoire) pour un rendu
-// cohérent. Prix : chaque hôtel a un multiplicateur selon son standing et
-// sa destination, donc les prix varient réellement d'un hôtel à l'autre.
-// ============================================================================
+
 (function () {
   const photo = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
 
-  // ---------------- Pays ----------------
+
   const pays = [
     { id: "sn", nom: "Sénégal", code: "SN", drapeau_emoji: "🇸🇳", image_url: photo("1580746738099-1f4ee3730563") },
     { id: "ma", nom: "Maroc", code: "MA", drapeau_emoji: "🇲🇦", image_url: photo("1489749798305-4fea3ae63d43") },
@@ -21,7 +12,7 @@
     { id: "es", nom: "Espagne", code: "ES", drapeau_emoji: "🇪🇸", image_url: photo("1583422409516-2895a77efded") },
   ];
 
-  // ---------------- Villes (plusieurs par pays) ----------------
+
   const villes = [
     { id: "dakar", pays_id: "sn", nom: "Dakar", image_url: photo("1580746738099-1f4ee3730563") },
     { id: "saly", pays_id: "sn", nom: "Saly", image_url: photo("1519046904884-53103b34b206") },
@@ -51,7 +42,7 @@
     return { nom: v.nom, pays_id: p.id, pays: { nom: p.nom, drapeau_emoji: p.drapeau_emoji } };
   }
 
-  // Photos de chambres réutilisées pour tous les hôtels (rendu cohérent)
+ 
   const ROOM_PHOTOS = {
     Simple: photo("1522771739844-6a9f6d5f14af"),
     Double: photo("1566073771259-6a8506099945"),
@@ -60,9 +51,7 @@
   };
   const GALLERY_EXTRA = [photo("1566073771259-6a8506099945"), photo("1590490360182-c33d57733427"), photo("1582719508461-905c673771fd")];
 
-  // ---------------- Hôtels ----------------
-  // "mult" ajuste le prix de base selon le standing de l'hôtel et le coût
-  // de la destination : chaque hôtel a donc des tarifs différents.
+  
   const hotels = [
     {
       id: "teranga-dakar", ville_id: "dakar", nom: "Teranga Palace Dakar", mult: 1.0,
@@ -159,7 +148,7 @@
 
   hotels.forEach(h => { h.villes = withVille(h.ville_id); h.actif = true; h.galerie_photos = GALLERY_EXTRA; });
 
-  // ---------------- Chambres (prix ajustés par hôtel) ----------------
+  
   const BASE_PRICES = { Simple: 40000, Double: 70000, Suite: 140000, Deluxe: 100000 };
   const ROOM_TYPES = [
     { suffix: "101", type: "Simple", adultes: 1, enfants: 0, description: "Chambre cosy, idéale pour un voyageur seul." },
@@ -188,7 +177,7 @@
     });
   });
 
-  // ---------------- Avis ----------------
+  
   const avis = [
     { id: "a1", hotel_id: "teranga-dakar", note: 5, commentaire: "Accueil exceptionnel, vue sur mer à couper le souffle. La Teranga dans toute sa splendeur !", utilisateurs: { prenom: "Aïssatou", nom: "Diop" } },
     { id: "a2", hotel_id: "teranga-dakar", note: 4, commentaire: "Très bel hôtel, petit-déjeuner délicieux. Le spa mérite le détour.", utilisateurs: { prenom: "Moussa", nom: "Fall" } },

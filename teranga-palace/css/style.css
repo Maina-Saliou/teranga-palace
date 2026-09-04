@@ -57,7 +57,7 @@ input,select{ font-family:inherit; }
 :focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
 .container{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
 
-/* ---------- Wax pattern divider (signature element) ---------- */
+
 .wax-divider{
   height:14px;
   width:100%;
@@ -71,7 +71,7 @@ input,select{ font-family:inherit; }
 }
 .wax-divider.dark{ opacity:0.35; }
 
-/* ---------- Buttons ---------- */
+
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
   padding:14px 28px; border-radius:999px; border:none;
@@ -92,7 +92,7 @@ input,select{ font-family:inherit; }
 .btn-danger:hover{ background:var(--terracotta); color:var(--white); }
 .btn[disabled]{ opacity:0.5; cursor:not-allowed; transform:none !important; }
 
-/* ---------- Header ---------- */
+
 .site-header{
   position:sticky; top:0; z-index:100;
   background:rgba(20,18,15,0.92);
@@ -109,7 +109,7 @@ input,select{ font-family:inherit; }
 .icon-btn{ width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08); color:var(--ivory); border:1px solid rgba(255,255,255,0.15);}
 .burger{ display:none; }
 
-/* ---------- Hero ---------- */
+
 .hero{
   position:relative;
   min-height:92vh;
@@ -127,7 +127,7 @@ input,select{ font-family:inherit; }
 .hero h1 em{ font-style:italic; color:var(--gold-light); }
 .hero-sub{ color:rgba(255,255,255,0.88); font-size:1.15rem; max-width:560px; margin:22px auto 0; }
 
-/* ---------- Search card ---------- */
+
 .search-card{
   position:relative;
   margin-top:-140px;
@@ -151,14 +151,14 @@ input,select{ font-family:inherit; }
 .search-submit{ grid-column:span 1; display:flex; align-items:stretch; }
 .search-submit .btn{ width:100%; border-radius:16px; }
 
-/* ---------- Section titles ---------- */
+
 .section{ padding:96px 0; }
 .section-head{ text-align:center; max-width:640px; margin:0 auto 52px; }
 .section-eyebrow{ color:var(--terracotta); text-transform:uppercase; letter-spacing:0.2em; font-size:0.76rem; font-weight:800; margin-bottom:12px; }
 .section-head h2{ font-size:clamp(1.9rem,3.4vw,2.8rem); }
 .section-head p{ margin-top:14px; }
 
-/* ---------- Destination cards ---------- */
+
 .destinations-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; }
 .destination-card{
   position:relative; border-radius:var(--radius-l); overflow:hidden; aspect-ratio:4/5; cursor:pointer;
@@ -174,7 +174,7 @@ input,select{ font-family:inherit; }
 .destination-info .meta{ display:flex; justify-content:space-between; font-size:0.85rem; color:rgba(255,255,255,0.85); }
 .destination-info .meta b{ color:var(--gold-light); }
 
-/* ---------- Hotel cards ---------- */
+
 .hotels-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
 .hotel-card{
   background:var(--white); border-radius:var(--radius-m); overflow:hidden; box-shadow:var(--shadow-card);
@@ -195,14 +195,13 @@ input,select{ font-family:inherit; }
 .price-tag small{ font-family:'Manrope'; font-size:0.72rem; font-weight:600; color:var(--text-muted); }
 .rating{ display:flex; align-items:center; gap:4px; font-weight:700; color:var(--gold-dark); font-size:0.9rem; }
 
-/* ---------- Why us ---------- */
+
 .why-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
 .why-card{ text-align:center; padding:34px 22px; background:var(--white); border-radius:var(--radius-m); box-shadow:var(--shadow-card); }
 .why-card .ico{ width:56px;height:56px;border-radius:50%; margin:0 auto 16px; background:linear-gradient(135deg,var(--gold-light),var(--gold-dark)); display:flex; align-items:center; justify-content:center; font-size:1.5rem; }
 .why-card h4{ font-size:1.05rem; margin-bottom:8px; }
 .why-card p{ font-size:0.9rem; }
 
-/* ---------- Footer ---------- */
 .site-footer{ background:var(--ebony); color:var(--ivory-dim); padding:70px 0 30px; }
 .footer-grid{ display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px; }
 .footer-grid h5{ color:var(--gold-light); text-transform:uppercase; font-size:0.78rem; letter-spacing:0.12em; margin-bottom:18px; }
@@ -210,12 +209,12 @@ input,select{ font-family:inherit; }
 .footer-grid ul li a:hover{ color:var(--gold-light); }
 .footer-bottom{ display:flex; justify-content:space-between; padding-top:26px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.82rem; color:rgba(255,255,255,0.5); }
 
-/* ---------- Generic page header (non-home pages) ---------- */
+
 .page-hero{ background:var(--emerald); padding:56px 0 40px; color:var(--white); }
 .page-hero h1{ color:var(--white); font-size:2.1rem; }
 .page-hero p{ color:rgba(255,255,255,0.75); margin-top:8px; }
 
-/* ---------- Filters + results layout ---------- */
+
 .results-layout{ display:grid; grid-template-columns:280px 1fr; gap:34px; align-items:start; padding:44px 0 90px; }
 .filters-card{ background:var(--white); border-radius:var(--radius-m); padding:22px; box-shadow:var(--shadow-card); position:sticky; top:100px; }
 .filters-card h4{ font-size:1rem; margin-bottom:14px; }
@@ -228,7 +227,7 @@ input,select{ font-family:inherit; }
 .result-row .body{ padding:20px 20px 20px 0; display:flex; flex-direction:column; gap:8px; }
 .result-row .foot{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto; }
 
-/* ---------- Hotel detail page ---------- */
+
 .gallery{ display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:1fr 1fr; gap:10px; border-radius:var(--radius-m); overflow:hidden; height:460px; }
 .gallery img{ width:100%; height:100%; object-fit:cover; cursor:pointer; }
 .gallery .main{ grid-row:span 2; }
@@ -250,12 +249,12 @@ input,select{ font-family:inherit; }
 .review-item .head{ display:flex; justify-content:space-between; margin-bottom:8px; font-weight:700; }
 .stars{ color:var(--gold-dark); letter-spacing:2px; }
 
-/* ---------- Carte Leaflet ---------- */
+
 .leaflet-popup-content-wrapper{ border-radius:var(--radius-s); font-family:'Manrope',sans-serif; }
 .leaflet-popup-content{ font-size:0.88rem; }
 .leaflet-container{ font-family:'Manrope',sans-serif; }
 
-/* ---------- Auth ---------- */
+
 .auth-wrap{ min-height:80vh; display:flex; align-items:center; justify-content:center; padding:60px 20px; }
 .auth-card{ width:100%; max-width:440px; background:var(--white); border-radius:var(--radius-l); box-shadow:var(--shadow-pop); padding:40px; }
 .auth-tabs{ display:flex; gap:10px; margin-bottom:26px; background:var(--ivory-dim); border-radius:999px; padding:5px; }
@@ -268,7 +267,7 @@ input,select{ font-family:inherit; }
 .form-msg.error{ background:#FBE7E1; color:var(--terracotta); }
 .form-msg.success{ background:#E4F0EC; color:var(--emerald); }
 
-/* ---------- Account / Admin dashboard ---------- */
+
 .dash-layout{ display:grid; grid-template-columns:260px 1fr; gap:0; min-height:80vh; }
 .dash-sidebar{ background:var(--ebony); color:var(--ivory); padding:34px 22px; }
 .dash-sidebar .user-chip{ display:flex; align-items:center; gap:12px; margin-bottom:32px; }
@@ -300,7 +299,7 @@ table.data-table td{ padding:14px 16px; border-top:1px solid var(--border); font
 .spinner{ width:22px; height:22px; border:3px solid rgba(255,255,255,0.3); border-top-color:var(--white); border-radius:50%; animation:spin .7s linear infinite; }
 @keyframes spin{ to{ transform:rotate(360deg); } }
 
-/* ---------- Responsive ---------- */
+
 @media (max-width: 980px){
   .nav-links{ display:none; }
   .search-card{ grid-template-columns:repeat(2,1fr); }

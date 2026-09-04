@@ -1,6 +1,4 @@
-// ============================================================================
-// Header dynamique : affiche "Connexion" ou le nom du client selon l'état
-// ============================================================================
+
 (async function () {
   const actions = document.getElementById("header-actions");
   if (!actions) return;

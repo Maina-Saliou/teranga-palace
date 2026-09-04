@@ -1,9 +1,5 @@
--- ============================================================================
--- TERANGA PALACE — DONNÉES DE DÉMONSTRATION
--- À exécuter après schema.sql dans le SQL Editor de Supabase
--- ============================================================================
 
--- 1. PAYS
+
 insert into public.pays (nom, code, drapeau_emoji, image_url) values
   ('Sénégal', 'SN', '🇸🇳', 'https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=1200'),
   ('Maroc',   'MA', '🇲🇦', 'https://images.unsplash.com/photo-1517821362941-13d5f668e8e2?w=1200'),
@@ -13,7 +9,7 @@ insert into public.pays (nom, code, drapeau_emoji, image_url) values
   ('Espagne', 'ES', '🇪🇸', 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200')
 on conflict (nom) do nothing;
 
--- 2. VILLES
+
 insert into public.villes (pays_id, nom, image_url)
 select id, 'Dakar', 'https://images.unsplash.com/photo-1580746738099-1f4ee3730563?w=1200' from public.pays where code = 'SN'
 union all
@@ -29,7 +25,7 @@ select id, 'Dubaï', 'https://images.unsplash.com/photo-1512453979798-5ea266f888
 union all
 select id, 'Barcelone', 'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200' from public.pays where code = 'ES';
 
--- 3. HOTELS (dont le vaisseau amiral : Teranga Palace Dakar)
+
 insert into public.hotels (ville_id, nom, adresse, description, etoiles, services, photo_principale, galerie_photos, latitude, longitude)
 select v.id,
   'Teranga Palace Dakar',
@@ -100,7 +96,7 @@ select v.id, 'Casa Barcelona Suites', 'Eixample, Barcelone, Espagne',
   41.3958, 2.1611
 from public.villes v where v.nom = 'Barcelone';
 
--- 4. CHAMBRES (pour chaque hôtel, 4 types de chambres)
+
 insert into public.chambres (hotel_id, numero, type, capacite_adultes, capacite_enfants, prix_nuit, description, photos)
 select h.id, t.numero, t.type, t.adultes, t.enfants, t.prix, t.descr, array[t.photo]
 from public.hotels h
