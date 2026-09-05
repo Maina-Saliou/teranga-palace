@@ -1,4 +1,3 @@
-
 const sba = window.supabaseClient;
 
 const tabLogin = document.getElementById("tab-login");
@@ -22,10 +21,20 @@ function showMsg(text, type = "error") {
   msgZone.innerHTML = `<div class="form-msg ${type}">${text}</div>`;
 }
 
-// Redirige déjà-connecté vers son compte
+iste -> admin.html, sinon account.html
+function redirectAfterAuth(profile) {
+  const rolesStaff = ["admin", "gestionnaire", "receptionniste"];
+  if (profile && rolesStaff.includes(profile.role)) {
+    window.location.href = "admin.html";
+  } else {
+    window.location.href = "account.html";
+  }
+}
+
+
 (async () => {
   const profile = await window.getCurrentProfile();
-  if (profile) window.location.href = "account.html";
+  if (profile) redirectAfterAuth(profile);
 })();
 
 loginForm.addEventListener("submit", async (e) => {
@@ -34,7 +43,9 @@ loginForm.addEventListener("submit", async (e) => {
   const password = document.getElementById("li-password").value;
   const { error } = await sba.auth.signInWithPassword({ email, password });
   if (error) { showMsg("Identifiants incorrects. " + error.message); return; }
-  window.location.href = "account.html";
+
+  const profile = await window.getCurrentProfile();
+  redirectAfterAuth(profile);
 });
 
 registerForm.addEventListener("submit", async (e) => {
@@ -57,7 +68,8 @@ registerForm.addEventListener("submit", async (e) => {
   }
 
   if (data.session) {
-    window.location.href = "account.html";
+    const profile = await window.getCurrentProfile();
+    redirectAfterAuth(profile);
   } else {
     showMsg("Compte créé ! Vérifiez votre boîte mail pour confirmer votre adresse, puis connectez-vous.", "success");
     switchTab("login");
