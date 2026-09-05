@@ -21,7 +21,6 @@ function showMsg(text, type = "error") {
   msgZone.innerHTML = `<div class="form-msg ${type}">${text}</div>`;
 }
 
-iste -> admin.html, sinon account.html
 function redirectAfterAuth(profile) {
   const rolesStaff = ["admin", "gestionnaire", "receptionniste"];
   if (profile && rolesStaff.includes(profile.role)) {
@@ -30,7 +29,6 @@ function redirectAfterAuth(profile) {
     window.location.href = "account.html";
   }
 }
-
 
 (async () => {
   const profile = await window.getCurrentProfile();
@@ -62,7 +60,6 @@ registerForm.addEventListener("submit", async (e) => {
   });
   if (error) { showMsg("Inscription impossible : " + error.message); return; }
 
-  // Met à jour le téléphone si le profil a bien été créé par le trigger
   if (data.user && telephone) {
     await sba.from("utilisateurs").update({ telephone }).eq("id", data.user.id);
   }
